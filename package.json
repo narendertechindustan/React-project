@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/MamtaAditiS/notification-test#readme",
   "dependencies": {
+    "moment": "^2.20.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "webpack": "^3.11.0",
