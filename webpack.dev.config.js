@@ -1,4 +1,4 @@
-var webpack = require('webpack');
+var webpack = require('webpack');   
 var path = require('path');
 
 var parentDir = path.join(__dirname, './');
@@ -11,17 +11,27 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'babel-loader'
             },{
-                test: /\.less$/,
-                loaders: ["style-loader", "css-loder", "less-loader"]
+                test: /\.(less|css)$/,
+                loaders: ["style-loader", "css-loader", "less-loader"]
+            },
+            {
+                test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                loader: require.resolve('url-loader'),
+                options: {
+                  limit: 10000,
+                  name: 'src/images/[name].[hash:8].[ext]',
+                },
             }
         ]
     },
     output: {
-        path: '/dist',
-        filename: 'bundle.js'
+        pathinfo: true,
+        filename: 'assets/js/bundle.js'
+        //publicPath: '/'
     },
     devServer: {
         contentBase: parentDir,
         historyApiFallback: true
     }
 }
+
